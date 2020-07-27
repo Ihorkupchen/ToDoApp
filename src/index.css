@@ -1,13 +1,195 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+input {
+  padding: 5px 10px;
+  font-family : Comic Sans MS, Comic Sans, cursive;
+  font-weight: 600;
+}
+.wrapper {
+display: flex;
+max-width: 500px;
+flex-direction: column;
+padding-top: 50px ;
+margin:0 auto ;
+font-weight: 600;
+font-size: 15px;
+font-family : Comic Sans MS, Comic Sans, cursive;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.done {
+  color: rgb(121, 121, 121);
 }
+
+.list, .add, .search {
+  flex-grow: 1;
+ 
+}
+
+.search {
+  
+  border: 2px solid rgb(121, 121, 121);
+  border-radius: 5px;
+
+}
+
+.list {
+  
+  min-height: 300px;
+  margin-bottom: 20px;
+  padding: 0;
+  border-radius: 5px;
+  border: 2px solid rgb(121, 121, 121);
+  color : #0000FF;
+  
+}
+
+.filterItem {
+  color: rgb(9, 255, 0);
+  
+}
+
+.filterItem:hover{
+  
+  font-size: 15px ;
+  font-weight: 600;
+}
+
+.item {
+  list-style: none;
+  border-bottom: 2px solid rgb(121, 121, 121);
+  padding:5px 15px ;
+}
+
+.item:hover{
+  cursor: default; ;
+  font-size: 16px ;
+  font-weight: 600;
+}
+
+.filterItem:hover{
+  
+  font-size: 15px ;
+  
+}
+
+
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.del {
+  background: #A9A9A9;
+  color: white;
+  font-family : Comic Sans MS, Comic Sans, cursive;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-left: 15px;
+ }
+ 
+ .del:hover {
+ background:rgb(138, 138, 138) ;
+ cursor: pointer;
+ }
+
+
+
+.add {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.add input {
+  flex-grow: 5;
+  border-radius: 5px 0 0 5px;
+  border: 2px solid rgb(121, 121, 121);
+  
+}
+
+.add button {
+  flex-grow: 1;
+  border-radius: 0 5px 5px 0 ;
+  border: 2px solid rgb(121, 121, 121);
+  border-left: none;
+  font-family : Comic Sans MS, Comic Sans, cursive;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  background: white;
+}
+
+.add button:hover {
+  background: rgb(121, 121, 121);
+  color: white;
+}
+
+
+
+.modalOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modalWindow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family : Comic Sans MS, Comic Sans, cursive;
+  font-weight: 600;
+  font-size: 15px; ;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  min-height: 150px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modalBody {
+  text-align: center;
+}
+
+.modalButton, .modalButtonInvert {
+  font-family : Comic Sans MS, Comic Sans, cursive;
+  position: relative;
+  padding: 10px 15px;
+  
+  border: none;
+  color: #FFF;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 5px;
+
+}
+
+.modalButton {
+  background-color: #7CC6fE;
+
+}
+.modalButtonInvert {
+  background-color: rgb(252, 76, 76);
+  
+}
+
+.modalButtonInvert:hover {
+  background-color: rgb(211, 46, 46)
+}
+.modalButton:hover {
+  background-color: rgb(105, 177, 233);
+}
+
+
+
+
+

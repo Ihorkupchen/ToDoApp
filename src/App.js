@@ -1,25 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import ToDoList from "./ToDo/ToDoList";
+import FilterToDoList from "./ToDo/FilterToDoList";
+import Context from "./ToDo/context";
+import AddToDo from "./ToDo/AddToDo";
+import reducer from "./ToDo/reducer";
+import SearchToDo from "./ToDo/SearchToDo";
 
 function App() {
+
+const initialState = {
+    todos : [],
+    isSearch: '',
+    filterTodos: null
+} 
+  const [state, dispatch] = useReducer(
+    reducer, initialState
+  );
+
+  
+  function addTodo(name) {
+    dispatch({
+      type: "add",
+      payload: name
+    });
+  }
+
+  function filter(name) {
+    dispatch({
+      type: "filter",
+      payload: name
+    });
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <div>
+        <Context.Provider value={{ dispatch }}>
+          <div className="wrapper">
+            <SearchToDo search = {filter} isSearch ={state.isSearch}/>
+           
+           {state.isSearch ? <FilterToDoList todos={state.filterTodos}/>
+           : <ToDoList todos={state.todos} /> }
+            
+            
+            <AddToDo onCreate={addTodo} />
+          
+          </div>
+        </Context.Provider>
+      </div>
+
   );
 }
 
