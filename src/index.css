@@ -1,132 +1,144 @@
-
-
-input {
-  padding: 5px 10px;
-  font-family : Comic Sans MS, Comic Sans, cursive;
-  font-weight: 600;
-}
 .wrapper {
-display: flex;
-max-width: 500px;
-flex-direction: column;
-padding-top: 50px ;
-margin:0 auto ;
-font-weight: 600;
-font-size: 15px;
-font-family : Comic Sans MS, Comic Sans, cursive;
+  width: 100%;
+  max-width: 600px;
+  padding: 50px 10px;
+  margin:0 auto ;
+  font-size: 25px;
+  font-family: 'Patrick Hand',cursive;;
 }
 
-.done {
-  color: rgb(121, 121, 121);
-}
-
-.list, .add, .search {
-  flex-grow: 1;
- 
-}
-
-.search {
-  
+.search-input {
+  padding: 5px 10px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  width: 100%;
   border: 2px solid rgb(121, 121, 121);
   border-radius: 5px;
+  box-sizing: border-box;
+}
 
+
+.block-list {
+  margin: 20px 0;
 }
 
 .list {
-  
-  min-height: 300px;
-  margin-bottom: 20px;
+  height: calc(9em + 95px);
+  overflow: auto;
   padding: 0;
   border-radius: 5px;
   border: 2px solid rgb(121, 121, 121);
   color : #0000FF;
-  
+  overflow-y: hidden;
 }
 
-.filterItem {
-  color: rgb(9, 255, 0);
-  
+.list:hover {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -moz-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  -o-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 
-.filterItem:hover{
-  
-  font-size: 15px ;
-  font-weight: 600;
+.list::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
 }
+
+.list::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgb(121, 121, 121);;
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+}
+
 
 .item {
   list-style: none;
   border-bottom: 2px solid rgb(121, 121, 121);
   padding:5px 15px ;
+  transition: 0.2s linear;
+
+
 }
-
-.item:hover{
-  cursor: default; ;
-  font-size: 16px ;
-  font-weight: 600;
-}
-
-.filterItem:hover{
-  
-  font-size: 15px ;
-  
-}
-
-
 
 .item:last-child {
   border-bottom: none;
 }
 
-.del {
-  background: #A9A9A9;
-  color: white;
-  font-family : Comic Sans MS, Comic Sans, cursive;
-  border-radius: 5px;
-  border: none;
+.item:hover{
   cursor: pointer;
-  margin-left: 15px;
- }
- 
- .del:hover {
- background:rgb(138, 138, 138) ;
- cursor: pointer;
- }
-
-
-
-.add {
-  display: flex;
-  margin-bottom: 50px;
+  font-weight: 600;
 }
 
-.add input {
-  flex-grow: 5;
-  border-radius: 5px 0 0 5px;
+.item__text--done {
+  color: rgb(121, 121, 121);
+}
+
+.item__del-btn {
+  background: white;
   border: 2px solid rgb(121, 121, 121);
+  color: rgb(121, 121, 121);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: 0.3s linear;
+}
+
+.item__del-btn:hover {
+  background: rgb(121, 121, 121);
+  color: white;
+  cursor: pointer;
+}
+
+.item--filter {
+  color: rgb(9, 255, 0);
   
 }
 
-.add button {
+.item--filter:hover{
+  cursor: default;
+}
+
+.add {
+  display: flex;
+}
+
+.add__input {
+  flex-grow: 5;
+  border-radius: 5px 0 0 5px;
+  border: 2px solid rgb(121, 121, 121);
+  padding: 5px 10px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  box-sizing: border-box;
+
+}
+
+.add__btn {
   flex-grow: 1;
   border-radius: 0 5px 5px 0 ;
   border: 2px solid rgb(121, 121, 121);
   border-left: none;
-  font-family : Comic Sans MS, Comic Sans, cursive;
-  font-weight: 600;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
   cursor: pointer;
   text-transform: uppercase;
   background: white;
+  box-sizing: border-box;
+  transition: 0.3s linear;
 }
 
-.add button:hover {
+.add__btn:hover {
   background: rgb(121, 121, 121);
   color: white;
 }
 
 
 
-.modalOverlay {
+.modal-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -135,59 +147,60 @@ font-family : Comic Sans MS, Comic Sans, cursive;
   right: 0;
 }
 
-.modalWindow {
+.modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  font-family : Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
   font-weight: 600;
-  font-size: 15px; ;
+  font-size: 25px; ;
   transform: translate(-50%, -50%);
   background-color: #FFF;
-  min-height: 150px;
   width: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 20px;
   border-radius: 5px;
 }
 
-.modalBody {
+.modal__text {
   text-align: center;
+  padding-bottom: 20px;
 }
 
-.modalButton, .modalButtonInvert {
-  font-family : Comic Sans MS, Comic Sans, cursive;
+.modal__btns {
+  display: flex;
+  height: 100px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modal__btn{
+  font-family: 'Patrick Hand', cursive;
   position: relative;
   padding: 10px 15px;
-  
   border: none;
   color: #FFF;
-  font-weight: 600;
+  font-size: 20px;
   cursor: pointer;
   text-transform: uppercase;
   display: inline-block;
   text-decoration: none;
   border-radius: 5px;
-
-}
-
-.modalButton {
   background-color: #7CC6fE;
-
+  transition: 0.5s linear;
 }
-.modalButtonInvert {
+
+.modal__btn:hover {
+  background-color: rgb(105, 177, 233);
+}
+
+.modal__btn--invert {
   background-color: rgb(252, 76, 76);
   
 }
 
-.modalButtonInvert:hover {
+.modal__btn--invert:hover {
   background-color: rgb(211, 46, 46)
 }
-.modalButton:hover {
-  background-color: rgb(105, 177, 233);
-}
+
 
 
 

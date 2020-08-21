@@ -1,47 +1,45 @@
 import React, { useContext, useState } from "react";
 import Context from "./context";
+import {changeStatus, removeTodo} from "./actions";
 import Modal from "./Modal";
+
 
 function ToDoItem({todo}) {
 
-  const [isModalOpen, setModalOpen] = useState(false)
+  const [isModalOpen, setModalOpen] = useState(false);
   const { dispatch } = useContext(Context);
-  const classes = [];
 
   function toggleModel () {
     setModalOpen(!isModalOpen);
-    isModalOpen &&
-    dispatch (
-      {
-          type:'status',
-          payload: todo.id
-      })
+
   } 
 
   function remove () {
-    dispatch({
-      type: "remove",
-      payload: todo.id})
-      setModalOpen(!isModalOpen)
+    dispatch(removeTodo(todo.id));
+    setModalOpen(!isModalOpen);
 
-  }  
+  }
+  function toggleStatus (e) {
+      const senderElementName = e.target.tagName.toLowerCase();
+      if(senderElementName !== 'button'){
+        dispatch (changeStatus(todo.id))
+      }
+  }
 
-  if (todo.done) classes.push("done");
+  const classes = ['item__text'];
+  if (todo.done) classes.push("item__text--done");
+
   return (
     <>
       <li className="item"
-          onClick = {() => dispatch (
-                      {
-                          type:'status',
-                          payload: todo.id
-                      })}
+          onClick = {toggleStatus}
       >
         <span className={classes.join(" ")}>
           {todo.name}
         </span>
         {todo.done &&
         <button
-          className = "del"
+          className = "item__del-btn"
           onClick={toggleModel}
         >
           Delete

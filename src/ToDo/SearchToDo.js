@@ -1,23 +1,25 @@
-import React  from "react";
+import React, {useContext} from "react";
+import Context from "./context";
+import {filterTodos} from "./actions";
 
 
-function SearchToDo(props) {
-   
-    
-    function onKeyUpHandler (e) {
-        
-        props.search(e.target.value);
-        
+
+function SearchToDo({isSearch}) {
+
+    const { dispatch } = useContext(Context);
+
+    function onChangeHandler (event) {
+        dispatch(filterTodos(event.target.value));
     }
-    
 
     return(
-    
-        <input type="text" 
-            onKeyUp = {onKeyUpHandler}
-            placeholder = 'Enter task name for search...' 
-            className = 'search'/>
-        
+        <input
+            value={isSearch}
+            className = 'search-input'
+            type="text"
+            onChange={onChangeHandler}
+            placeholder = 'Enter task name for search...'
+        />
     )
 }
 

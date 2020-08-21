@@ -1,23 +1,30 @@
-import React , { useState}   from 'react'
+import React , { useState, useContext}   from 'react';
+import {createTodo, filterTodos} from "./actions";
+import Context from "./context";
 
 
-function AddToDo ({onCreate}) {
+function AddToDo () {
+    const { dispatch } = useContext(Context);
     const [value, setValue] = useState('');
 
     function submitHandler (e) {
         e.preventDefault();
-        if(value.trim()) onCreate(value);
+        if(value.trim()) {
+            dispatch(createTodo(value));
+            dispatch(filterTodos(''))
+        }
         setValue('');
-       
-
     }
     
     return (
       
         <form action="" onSubmit={submitHandler} className = 'add'>
-          <input value={value} placeholder = 'Enter task and press "Add Task" button' 
-            onChange={e => setValue(e.target.value)} />
-          <button type="submit">Add Task!</button>
+          <input
+              className='add__input'
+              value={value}
+              placeholder = 'Enter task and press "Add Task" button'
+              onChange={e => setValue(e.target.value)} />
+          <button className='add__btn' type="submit">Add Task!</button>
         </form>
       
     );
