@@ -1,3 +1,7 @@
+### ToDo веб-додаток, написаний за допомогою функціональних-компонентів, з використанням хуків. Є пошук по створеним задачам, можливість додати нову задачу, виділити задачу як виконану, видалити задачу. Використовував React, React-Hooks, CRA, NPM, Firebase.
+
+### Посилання: https://todo-e6f23.web.app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
